@@ -26,25 +26,23 @@ app.post('/statement', async (req, res) => {
   let { userId, password, startDate, endDate } = req.body;
 
   if (!userId || !password || !startDate || !endDate) {
-    res.send({
+    return res.send({
       status: false,
       message: "Please provide userId, password, startDate and endDate "
     })
-
-    return;
   }
 
   let response = await login(userId, password);
 
-  if (!response.status) res.send(response);
+  if (!response.status) return res.send(response);
 
 
   let transactions = await getTransactions(startDate, endDate);
 
-  if (!response.status) res.send(response);
+  if (!response.status) return res.send(response);
 
   if (transactions.message.length == 0) {
-    res.send({
+    return res.send({
       status: true,
       message: "No transactions within this period found"
     })
