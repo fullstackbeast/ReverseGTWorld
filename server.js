@@ -37,12 +37,9 @@ app.post('/statement', async (req, res) => {
   }
 
   let response = await login(userId, password);
-  // let response = await login("23278534701", "08053810200");
 
   if (!response.status) res.send(response);
 
-  // FromDate: '01/01/2022',
-  // ToDate: '03/03/2022',
 
   let transactions = await getTransactions(startDate, endDate);
 
@@ -68,5 +65,4 @@ app.listen(port, async () => {
 
   console.log(`Example app listening on port ${port}`)
 
-  // let response = await login("23278533709", "98053810900");
 })
