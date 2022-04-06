@@ -23,8 +23,6 @@ app.get('/', (req, res) => {
 app.post('/statement', async (req, res) => {
   resetStorage();
 
-  console.log(req.body);
-
   let { userId, password, startDate, endDate } = req.body;
 
   if (!userId || !password || !startDate || !endDate) {
