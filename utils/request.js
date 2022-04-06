@@ -1,20 +1,20 @@
-const fetch = require('node-fetch');
+const axios = require('axios').default;
 
 
 exports.post = async (url, data) => {
 
     try {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
+    //     const response = await fetch(url, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
 
-        const d = await response.json();
+        const d = await axios.post(url, data);
 
-        return d;
+        return d.data;
 
     } 
     catch (e) {
