@@ -27,12 +27,12 @@ module.exports = async (transactions) => {
     })
 
     return {
+        accountNumber: getStorage().sourceAccount,
         openingBalance,
         closingbalance,
         totalCredit,
         totalDebit,
-        transactions: statmentTransactions,
-        accountNumber: getStorage().sourceAccount
+        transactions: statmentTransactions
     }
 
 }

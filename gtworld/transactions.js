@@ -4,6 +4,8 @@ const { getStorage } = require('../utils/storage.js');
 const { post } = require('../utils/request.js');
 
 module.exports = async (startDate, endDate) => {
+    const aactNum = getStorage().sourceAccount;
+
     const reqdata = {
         UserId: getStorage().userId,
         SourceAccount: encrypt(getStorage().sourceAccount),
@@ -19,10 +21,10 @@ module.exports = async (startDate, endDate) => {
 
     const jsonResponse = JSON.parse(response);
 
-    if(jsonResponse.StatusCode == 0){
+    if (jsonResponse.StatusCode == 0) {
         const message = JSON.parse(jsonResponse.Message);
 
-        return{
+        return {
             success: true,
             message: message.TRANSACTIONS.TRANSACTION
         }
@@ -31,7 +33,7 @@ module.exports = async (startDate, endDate) => {
 
     return {
         success: false,
-        message : "An error occoured"
+        message: "An error occoured"
     }
 
 

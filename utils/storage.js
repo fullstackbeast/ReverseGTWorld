@@ -7,11 +7,15 @@ exports.getStorage = () => {
         authToken: localStorage.getItem('authToken') || '',
         uUid: localStorage.getItem('uUid') || "8E5187463676DAAA",
         userId: localStorage.getItem('userId') || '',
-        sourceAccount: "0208621435",
+        sourceAccount: localStorage.getItem('sourceAccount') || '',
         authToken :  localStorage.getItem('authToken') || ''
     }
 }
 
 exports.setStorage = (key, value) => {
     localStorage.setItem(key, value);
+}
+
+exports.resetStorage = () => {
+    localStorage.clear();
 }

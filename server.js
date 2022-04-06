@@ -1,6 +1,7 @@
 const express = require('express');
 const getTransactions = require('./gtworld/transactions.js');
 const constructstatement = require('./utils/constructstatement.js');
+const {resetStorage} = require('./utils/storage.js');
 const { login } = require('./gtworld/login.js');
 
 const app = express()
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 
 
 app.post('/statement', async (req, res) => {
+  resetStorage();
 
   console.log(req.body);
 
